@@ -49,3 +49,7 @@ Red-Green-Refactor.
 ### Stap_2a
 - Breidt de test uit met een unittest die de som berekent van 3 getallen.
 - Voer de test uit. Waarom faalt deze?
+
+### Stap_2b
+- Groen: Refactored, StringCaulator had teveel verantwoordelijkheden. Het parsen van de string naar een lijst van integer is een aparte class (had ook functie kunnen zijn) geworden, 
+de calculator doet alleen nog het rekenwerk.
