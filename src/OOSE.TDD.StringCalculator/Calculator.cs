@@ -4,11 +4,12 @@ namespace OOSE.TDD.StringCalculator
 {
     public class Calculator
     {
-        private NumberStringParser parser = new NumberStringParser();
+        
 
         public int Add(string numberString)
         {
-            var parsedNumers = parser.Parse(numberString);
+            NumberStringParser parser = new NumberStringParser(numberString);
+            var parsedNumers = parser.Parse();
             return parsedNumers.Sum();
         }
     }

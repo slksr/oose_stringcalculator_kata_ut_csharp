@@ -1,3 +1,5 @@
+using OOSE.TDD.StringCalculator;
+
 namespace OOSE.TDD.StringCalculatorTests
 {
     /// <summary>
@@ -32,9 +34,9 @@ namespace OOSE.TDD.StringCalculatorTests
         }
 
         [Fact] 
-        public void StringWithoutValidNumberShouldThrowIllegalArgumentException()
+        public void StringWithoutValidNumberShouldThrowArgumentException()
         {
-            Assert.Throws<FormatException>(() => calculator.StringCalculator.Add("a"));
+            Assert.Throws<ArgumentException>(() => calculator.StringCalculator.Add("a"));
         }
 
         [Fact]
@@ -44,7 +46,7 @@ namespace OOSE.TDD.StringCalculatorTests
         }
 
         [Fact]
-        public void StringWithTwoNumbersSeparatedByADifferentSeparatorThrowsIllegalArgumentException()
+        public void StringWithTwoNumbersSeparatedByADifferentSeparatorThrowsArgumentException()
         {
             Assert.Throws<ArgumentException>(() => calculator.StringCalculator.Add("1;2"));
         }
@@ -62,9 +64,58 @@ namespace OOSE.TDD.StringCalculatorTests
         }
 
         [Fact]
-        public void StringWithOneNumberAndTwoSeparatorsThrowsIllegalArgumentException()
+        public void StringWithOneNumberAndTwoSeparatorsThrowsArgumentException()
         {
             Assert.Throws<ArgumentException>(() => calculator.StringCalculator.Add("1,\n"));
+        }
+
+        [Fact]
+        public void StringWithTwoNumbersAndSemicolonACustomDelimiterReturnsSum()
+        {
+            Assert.Equal(3, calculator.StringCalculator.Add("//;\n1;2"));
+        }
+
+        [Fact]
+        public void StringWithThreeNumbersAndExclamationMarkAsCustomDelimiterReturnsSum()
+        {
+            Assert.Equal(6, calculator.StringCalculator.Add("//!\n1!2!3"));
+        }
+
+        [Fact]
+        public void StringWithThreeNumbersAndDollarSignAndNewLineAsCustomDelimiterReturnsSum()
+        {
+            Assert.Equal(6, calculator.StringCalculator.Add("//$\n1$2\n3"));
+        }
+
+        [Fact]
+        public void StringNumberNegativeTwoReturnsThrowsArgumentExceptionContainingWrongNumber()
+        {
+            try
+            {
+                calculator.StringCalculator.Add("-2");
+                Assert.True(false); // Test moet altijd falen, de echte check zit in de catch!
+            }
+            catch (ArgumentException e)
+            {
+                Assert.Contains("negatives not allowed", e.Message);
+                Assert.Contains("-2", e.Message);
+            }
+        }
+
+        [Fact]
+        public void StringNumberTwoNegativesReturnsThrowsArgumentExceptionContainingWrongNumbers()
+        {
+            try
+            {
+                calculator.StringCalculator.Add("-2,-3");
+                Assert.True(false);
+            }
+            catch (ArgumentException e)
+            {
+                Assert.Contains("negatives not allowed", e.Message);
+                Assert.Contains("-2", e.Message);
+                Assert.Contains("-3", e.Message);
+            }
         }
     }
 }
