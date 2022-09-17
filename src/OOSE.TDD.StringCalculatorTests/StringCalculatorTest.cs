@@ -46,7 +46,7 @@ namespace OOSE.TDD.StringCalculatorTests
         [Fact]
         public void StringWithTwoNumbersSeparatedByADifferentSeparatorThrowsIllegalArgumentException()
         {
-            Assert.Throws<FormatException>(() => calculator.StringCalculator.Add("1;2"));
+            Assert.Throws<ArgumentException>(() => calculator.StringCalculator.Add("1;2"));
         }
 
         [Fact]
@@ -64,7 +64,7 @@ namespace OOSE.TDD.StringCalculatorTests
         [Fact]
         public void StringWithOneNumberAndTwoSeparatorsThrowsIllegalArgumentException()
         {
-            Assert.Throws<FormatException>(() => calculator.StringCalculator.Add("1,\n"));
+            Assert.Throws<ArgumentException>(() => calculator.StringCalculator.Add("1,\n"));
         }
     }
 }
