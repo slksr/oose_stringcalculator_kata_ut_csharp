@@ -37,3 +37,7 @@ Red-Green-Refactor.
 - Voeg een eerste unittest toe aan de Test class. EmptyStringReturnsZero().
 - Voer de test uit. Deze zal falen! 
 - In de volgende stap gaan we business logica toevoegen.
+
+### Stap_1b
+- Schrijf de logica zodat de test EmptyStringReturnsZero() slaagt.
+- Voer de test opnieuw uit. Green!
