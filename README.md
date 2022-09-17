@@ -41,3 +41,7 @@ Red-Green-Refactor.
 ### Stap_1b
 - Schrijf de logica zodat de test EmptyStringReturnsZero() slaagt.
 - Voer de test opnieuw uit. Green!
+
+### Stap_1c
+- Schrijf de overige unittesten zodat alle condities worden getest.
+- De logica kan ook een Error opgooien. Schrijf een test die ook deze error controleert!
