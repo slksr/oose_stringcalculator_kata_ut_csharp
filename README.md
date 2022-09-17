@@ -57,3 +57,12 @@ de calculator doet alleen nog het rekenwerk.
 ### Stap_3
 - Schrijf een test die test of de Add method een lege regel tussen de nummers kan verwerken. ok: “1\n2,3” (som = 6).
 - Schrijf nu de code zodat de test groen wordt.
+
+### Stap_4
+- Schrijf een test die meerdere scheidingstekens controleert. 
+	 - Bijvoorbeeld: “//;\n1;2” geeft 3 als antwoord als het schedingsteken ; is.
+	 - Alle aanwezige scenarios moeten blijven werken.
+- Schrijf de logica om de test te laten slagen.
+- Schrijf een test  die controleert of een Exceptie wordt getoond als negatieve cijfers worden ingevoerd. 
+	- Bij meerdere negatieve getallen moeten deze alle worden getoond.
+- Schrijf de code om ook deze test te laten slagen.

@@ -66,5 +66,23 @@ namespace OOSE.TDD.StringCalculatorTests
         {
             Assert.Throws<ArgumentException>(() => calculator.StringCalculator.Add("1,\n"));
         }
+
+        [Fact]
+        public void stringWithTwoNumbersAndSemicolonACustomDelimiterReturnsSum()
+        {
+            Assert.Equal(3, calculator.StringCalculator.Add("//;\n1;2"));
+        }
+
+        [Fact]
+        public void stringWithThreeNumbersAndExclamationMarkAsCustomDelimiterReturnsSum()
+        {
+            Assert.Equal(6, calculator.StringCalculator.Add("//!\n1!2!3"));
+        }
+
+        [Fact]
+        public void stringWithThreeNumbersAndDollarSignAndNewLineAsCustomDelimiterReturnsSum()
+        {
+            Assert.Equal(6, calculator.StringCalculator.Add("//$\n1$2\n3"));
+        }
     }
 }
