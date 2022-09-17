@@ -34,7 +34,7 @@ namespace OOSE.TDD.StringCalculatorTests
         }
 
         [Fact] 
-        public void StringWithoutValidNumberShouldThrowIllegalArgumentException()
+        public void StringWithoutValidNumberShouldThrowArgumentException()
         {
             Assert.Throws<ArgumentException>(() => calculator.StringCalculator.Add("a"));
         }
@@ -46,7 +46,7 @@ namespace OOSE.TDD.StringCalculatorTests
         }
 
         [Fact]
-        public void StringWithTwoNumbersSeparatedByADifferentSeparatorThrowsIllegalArgumentException()
+        public void StringWithTwoNumbersSeparatedByADifferentSeparatorThrowsArgumentException()
         {
             Assert.Throws<ArgumentException>(() => calculator.StringCalculator.Add("1;2"));
         }
@@ -64,7 +64,7 @@ namespace OOSE.TDD.StringCalculatorTests
         }
 
         [Fact]
-        public void StringWithOneNumberAndTwoSeparatorsThrowsIllegalArgumentException()
+        public void StringWithOneNumberAndTwoSeparatorsThrowsArgumentException()
         {
             Assert.Throws<ArgumentException>(() => calculator.StringCalculator.Add("1,\n"));
         }
@@ -88,7 +88,7 @@ namespace OOSE.TDD.StringCalculatorTests
         }
 
         [Fact]
-        public void StringNumberNegativeTwoReturnsThrowsIlllegalArgumentExceptionContainingWrongNumber()
+        public void StringNumberNegativeTwoReturnsThrowsArgumentExceptionContainingWrongNumber()
         {
             try
             {
@@ -103,7 +103,7 @@ namespace OOSE.TDD.StringCalculatorTests
         }
 
         [Fact]
-        public void StringNumberTwoNegativesReturnsThrowsIlllegalArgumentExceptionContainingWrongNumbers()
+        public void StringNumberTwoNegativesReturnsThrowsArgumentExceptionContainingWrongNumbers()
         {
             try
             {
