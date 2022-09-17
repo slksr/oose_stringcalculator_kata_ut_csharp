@@ -53,3 +53,7 @@ Red-Green-Refactor.
 ### Stap_2b
 - Groen: Refactored, StringCaulator had teveel verantwoordelijkheden. Het parsen van de string naar een lijst van integer is een aparte class (had ook functie kunnen zijn) geworden, 
 de calculator doet alleen nog het rekenwerk.
+
+### Stap_3
+- Schrijf een test die test of de Add method een lege regel tussen de nummers kan verwerken. ok: “1\n2,3” (som = 6).
+- Schrijf nu de code zodat de test groen wordt.

@@ -54,5 +54,17 @@ namespace OOSE.TDD.StringCalculatorTests
         {
             Assert.Equal(6, calculator.StringCalculator.Add("1,2,3"));
         }
+
+        [Fact]
+        public void StringWithThreeNumbersAndTwoSeparatorsReturnsSum()
+        {
+            Assert.Equal(6, calculator.StringCalculator.Add("1\n2,3"));
+        }
+
+        [Fact]
+        public void StringWithOneNumberAndTwoSeparatorsThrowsIllegalArgumentException()
+        {
+            Assert.Throws<FormatException>(() => calculator.StringCalculator.Add("1,\n"));
+        }
     }
 }
