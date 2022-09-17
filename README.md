@@ -22,3 +22,18 @@ De stappen zoals beschreven voor de Java variant kunnen hier ook gebruikt worden
 
 Alle benodigde packages worden via Nuget geinstalleerd. De inhoud van de branches komen overeen met de hierboven genoemde Java variant.
 
+# TDD
+In test-driven development (TDD) worden testen gebruikt als uitvoerbare specificaties voordat de daadwerkelijke code wordt geschreven.
+Red-Green-Refactor.
+
+
+## Stappen 
+
+### Stap_1a
+- Maak het project aan voor het te bouwen product: StringCalculator
+- Voeg de Calculator class toe. Hier komt de daadwerkelijke functionaliteit (business logica).
+- Maak een Test project aan
+- Voeg de eerste Add methode toe aan de Calculator class. Maar nog implementatie van de methode!
+- Voeg een eerste unittest toe aan de Test class. EmptyStringReturnsZero().
+- Voer de test uit. Deze zal falen! 
+- In de volgende stap gaan we business logica toevoegen.
