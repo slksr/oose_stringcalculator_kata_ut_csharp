@@ -8,13 +8,30 @@ namespace OOSE.TDD.StringCalculator
 {
     public class NumberStringParser
     {
-        public readonly char[] Seperators = { ',', '\n' };
+        private string listWithNumbersToParse;
+        private char[] separators = { ',', '\n' };
 
-        public List<int> Parse(string listWithNumbersToParse)
+        public NumberStringParser(string listWithNumbersToParse)
         {
-            string errorText = "Niet toegestane tekens in de lijst met cijfers";
+            this.listWithNumbersToParse = listWithNumbersToParse;
+        }
+
+        public List<int> Parse()
+        {
+            if (PrefixedWithDifferentSeparator(listWithNumbersToParse))
+            {
+                separators[0] = char.Parse(listWithNumbersToParse.Substring(2, 1));
+                StripPrefixedSeparator();
+            }
+            return ParseWithSeparators(listWithNumbersToParse);
+        }
+
+        private List<int> ParseWithSeparators(string listWithNumbersToParse)
+        {
+            string errorText = "Niet toegestane tekens in de lijst met cijfers.";
             List<int> parsedNumbers = new();
-            var tokens = listWithNumbersToParse.Split(Seperators);
+
+            var tokens = listWithNumbersToParse.Split(separators);
 
             if (tokens.Length == 1)
             {
@@ -32,6 +49,7 @@ namespace OOSE.TDD.StringCalculator
                     return parsedNumbers;
                 }
             }
+            
 
             foreach (var part in tokens)
             {
@@ -42,6 +60,17 @@ namespace OOSE.TDD.StringCalculator
                 parsedNumbers.Add(number);
             }
             return parsedNumbers;
+        }
+
+        private void StripPrefixedSeparator()
+        {
+            listWithNumbersToParse = listWithNumbersToParse
+                .Substring(listWithNumbersToParse.IndexOf('\n') + 1);
+        }
+
+        private bool PrefixedWithDifferentSeparator(string listWithNumbersToParse)
+        {
+            return listWithNumbersToParse.StartsWith("//");
         }
 
         private bool ValidateInputNotEmpty(string input)

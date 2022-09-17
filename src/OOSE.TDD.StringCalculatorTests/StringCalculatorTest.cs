@@ -68,19 +68,19 @@ namespace OOSE.TDD.StringCalculatorTests
         }
 
         [Fact]
-        public void stringWithTwoNumbersAndSemicolonACustomDelimiterReturnsSum()
+        public void StringWithTwoNumbersAndSemicolonACustomDelimiterReturnsSum()
         {
             Assert.Equal(3, calculator.StringCalculator.Add("//;\n1;2"));
         }
 
         [Fact]
-        public void stringWithThreeNumbersAndExclamationMarkAsCustomDelimiterReturnsSum()
+        public void StringWithThreeNumbersAndExclamationMarkAsCustomDelimiterReturnsSum()
         {
             Assert.Equal(6, calculator.StringCalculator.Add("//!\n1!2!3"));
         }
 
         [Fact]
-        public void stringWithThreeNumbersAndDollarSignAndNewLineAsCustomDelimiterReturnsSum()
+        public void StringWithThreeNumbersAndDollarSignAndNewLineAsCustomDelimiterReturnsSum()
         {
             Assert.Equal(6, calculator.StringCalculator.Add("//$\n1$2\n3"));
         }
