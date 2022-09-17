@@ -1,5 +1,9 @@
 namespace OOSE.TDD.StringCalculatorTests
 {
+    /// <summary>
+    /// Create a simple String calculator with a method int Add(string numbers). The method can take 0, 1 or 2 numbers, 
+    /// and will return their sum (for an empty string it will return 0) for example “” or “1” or “1,2”
+    /// </summary>
     public class StringCalculatorTest : IClassFixture<StringCalculatorFixture>
     {
         private readonly StringCalculatorFixture calculator;
@@ -43,6 +47,12 @@ namespace OOSE.TDD.StringCalculatorTests
         public void StringWithTwoNumbersSeparatedByADifferentSeparatorThrowsIllegalArgumentException()
         {
             Assert.Throws<FormatException>(() => calculator.StringCalculator.Add("1;2"));
+        }
+
+        [Fact]
+        public void StringWithThreeNumbersSeparatedByACommaReturnsSum()
+        {
+            Assert.Equal(6, calculator.StringCalculator.Add("1,2,3"));
         }
     }
 }

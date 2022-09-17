@@ -45,3 +45,7 @@ Red-Green-Refactor.
 ### Stap_1c
 - Schrijf de overige unittesten zodat alle condities worden getest.
 - De logica kan ook een Error opgooien. Schrijf een test die ook deze error controleert!
+
+### Stap_2a
+- Breidt de test uit met een unittest die de som berekent van 3 getallen.
+- Voer de test uit. Waarom faalt deze?
