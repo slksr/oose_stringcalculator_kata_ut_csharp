@@ -36,7 +36,7 @@ namespace OOSE.TDD.StringCalculatorTests
         [Fact] 
         public void StringWithoutValidNumberShouldThrowIllegalArgumentException()
         {
-            Assert.Throws<FormatException>(() => calculator.StringCalculator.Add("a"));
+            Assert.Throws<ArgumentException>(() => calculator.StringCalculator.Add("a"));
         }
 
         [Fact]

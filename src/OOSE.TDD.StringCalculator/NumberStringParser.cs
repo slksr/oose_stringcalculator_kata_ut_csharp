@@ -8,8 +8,10 @@ namespace OOSE.TDD.StringCalculator
 {
     public class NumberStringParser
     {
+        private const string negativeText = "negatives not allowed ";
+        private const string errorText = "Niet toegestane tekens in de lijst met cijfers.";
         private string listWithNumbersToParse;
-        private char[] separators = { ',', '\n' };
+        private readonly char[] separators = { ',', '\n' };
 
         public NumberStringParser(string listWithNumbersToParse)
         {
@@ -28,9 +30,7 @@ namespace OOSE.TDD.StringCalculator
 
         private List<int> ParseWithSeparators(string listWithNumbersToParse)
         {
-            string errorText = "Niet toegestane tekens in de lijst met cijfers.";
             List<int> parsedNumbers = new();
-
             var tokens = listWithNumbersToParse.Split(separators);
 
             if (tokens.Length == 1)
@@ -45,11 +45,13 @@ namespace OOSE.TDD.StringCalculator
                 }
                 else
                 {
-                    parsedNumbers.Add(int.Parse(tokens[0]));
+                    parsedNumbers.Add(ParseNumber(tokens[0]));
                     return parsedNumbers;
                 }
             }
-            
+
+            // Negatieve getallen zijn niet toegestaan
+            ThrowExceptionWhenListContainsNegatives(tokens);
 
             foreach (var part in tokens)
             {
@@ -81,6 +83,34 @@ namespace OOSE.TDD.StringCalculator
         private bool SeparatorsAreNotUsedAsDelimiters(string listWithNumbersToParse)
         {
             return listWithNumbersToParse.Length > 2;
+        }
+
+        private void ThrowExceptionWhenListContainsNegatives(string[] tokens)
+        {
+            var negatives = tokens.Where(x => !string.IsNullOrEmpty(x) && int.Parse(x) < 0).ToArray();
+            string exceptionMessage = negativeText;
+            if (negatives.Any())
+            {
+                StringBuilder builder = new StringBuilder();
+                builder.Append(exceptionMessage);
+                foreach (var negative in negatives)
+                {
+                    builder.Append(negative);
+                }
+                throw new ArgumentException(builder.ToString());
+            }
+        }
+
+        private int ParseNumber(string token)
+        {
+            if (int.TryParse(token, out int number))
+            {
+                if (number >= 0)
+                {
+                    return number;
+                }
+            }
+            throw new ArgumentException(negativeText + number);
         }
     }
 }
