@@ -46,13 +46,25 @@ namespace OOSE.TDD.StringCalculatorTests
         [Fact]
         public void StringWithTwoNumbersSeparatedByADifferentSeparatorThrowsIllegalArgumentException()
         {
-            Assert.Throws<FormatException>(() => calculator.StringCalculator.Add("1;2"));
+            Assert.Throws<ArgumentException>(() => calculator.StringCalculator.Add("1;2"));
         }
 
         [Fact]
         public void StringWithThreeNumbersSeparatedByACommaReturnsSum()
         {
             Assert.Equal(6, calculator.StringCalculator.Add("1,2,3"));
+        }
+
+        [Fact]
+        public void StringWithThreeNumbersAndTwoSeparatorsReturnsSum()
+        {
+            Assert.Equal(6, calculator.StringCalculator.Add("1\n2,3"));
+        }
+
+        [Fact]
+        public void StringWithOneNumberAndTwoSeparatorsThrowsIllegalArgumentException()
+        {
+            Assert.Throws<ArgumentException>(() => calculator.StringCalculator.Add("1,\n"));
         }
     }
 }
